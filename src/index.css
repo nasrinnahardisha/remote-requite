@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  font-family: "Poppins", sans-serif;
+}
+
+
+.clip-hero {
+  clip-path: path(
+    "M 0 0 L 1920 0 L 1920 620 C 1600 720, 1300 520, 960 640 C 600 760, 300 540, 0 650 Z"
+  );
+}
+
+/* Responsive fallback for hero wave clip-path on smaller screens */
+@media (max-width: 1024px) {
+  .clip-hero {
+    clip-path: ellipse(140% 100% at 50% 0%);
+  }
+}
+
+@theme {
+  --color-primary-dark: #12335f;
+  --color-primary: #1b4781;
+  --color-text: #11142d;
+  --color-primary-light: #2c66b1;
+  --color-accent: #c2eeff;
+  --color-accent-hover: #3d9fc4;
+  --color-btn: #1e3e85;
+  --color-cyan: #53b4da;
+  --color-accent-cyan: #1e3e85;
+  --color-para: #11142DA3;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 52px;
+}
+
+p {
+  font-size: 19px;
+  font-weight: normal;
+  line-height: 35px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 28px;
+    line-height: 44px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 24px;
+    line-height: 44px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 32px;
+  }
+}
