@@ -1,47 +1,69 @@
-# RemoteRecruit
+# 🌍 RemoteRecruit — Global Remote Talent & Hiring Platform
 
-Marketing landing page for *RemoteRecruit* — a global, fee-free job board connecting employers and remote talent worldwide.
+![RemoteRecruit Banner](https://i.ibb.co/ZRkZfvWR/Screenshot-935.png)
 
-## Tech Stack
+## 📖 Project Overview
+**RemoteRecruit** is a modern, responsive marketing landing page for a global, fee-free job board connecting employers with remote talent worldwide. Built with **React 19**, **Tailwind CSS 4**, and **Framer Motion**, the platform highlights worldwide job opportunities, custom talent profiles, interactive FAQs, and transparent pricing tiers with smooth scroll-reveal animations.
 
-| Layer | Technology |
-|-------|------------|
-| Framework | React 19 |
-| Build tool | Vite 8 |
-| Styling | Tailwind CSS 4 |
-| Routing | React Router 7 |
-| Animation | Framer Motion |
-| Icons | Lucide React |
+🔗 **Live Demo:** [Visit RemoteRecruit](https://remote-requite-g3ay.vercel.app/)  
+🔗 **Repository:** [GitHub Repo](https://github.com/nasrinnahardisha/remote-requite)
 
-## Prerequisites
+---
 
-- *Node.js* 18 or later (20+ recommended)
-- *npm* 9 or later
+## 🛠️ Main Technologies Used
 
-## Getting Started
+| Layer | Technologies |
+| :--- | :--- |
+| **Framework** | React 19 |
+| **Build Tool** | Vite 8 |
+| **Styling** | Tailwind CSS 4 (`@theme` tokens) |
+| **Routing** | React Router 7 |
+| **Animation** | Framer Motion |
+| **Icons** | Lucide React |
+| **Deployment** | Vercel |
 
-bash
-# Install dependencies
-npm install
+### 💡 Why These Technologies Were Chosen
+- **React 19 & Vite 8:** Chosen for ultra-fast development server startup, modern component patterns, and lightweight production builds (~144 KB gzipped JS).
+- **Tailwind CSS 4:** Adopted the CSS-first `@theme` configuration to define custom brand colors (`#1E3E85`, `#336DA6`, `#F5A623`) and Poppins typography cleanly without extra config overhead.
+- **Framer Motion:** Integrated to build reusable `ScrollReveal` components and smooth micro-interactions that elevate the landing page's visual appeal.
+- **React Router 7:** Manages clean client-side navigation, root layouts (`Navbar`, `Footer`, `ScrollToTopButton`), and custom `404 Not Found` handling.
 
-# Start development server
-npm run dev
+---
 
+## ✨ Key Features
+- 🎯 **Conversion-Focused Hero & CTA Sections:** Engaging headline, gradient backdrop, and clear call-to-action flows for both employers and remote talent.
+- 🌐 **Comprehensive Landing Page Sections:** Modular sections covering *GlobalReach*, *Actually (Fee-Free Messaging)*, *Custom Profile Showcase*, *ReadyHelp Support*, *Interactive FAQ Accordion*, and *Free vs. Premium Pricing Plans*.
+- ✨ **Smooth Scroll Animations:** Custom `ScrollReveal` wrapper powered by Framer Motion for fluid element entrance transitions.
+- 🔍 **SEO & Social Meta Ready:** Configured Open Graph (`og:title`, `og:description`, `og:type`) and Twitter card metadata in `index.html`.
+- 📱 **Fully Responsive Layout:** Seamless experience across mobile, tablet, and desktop screens with a responsive mobile navigation menu.
 
-Open the URL shown in the terminal (default: http://localhost:5173).
+---
 
-## Available Scripts
+## 📦 Key Dependencies
+- `react` & `react-dom` (`v19`) — Core UI library
+- `react-router-dom` (`v7`) — Client-side routing and nested layout management
+- `framer-motion` — Declarative scroll animations and UI transitions
+- `lucide-react` — Crisp, lightweight vector icon library
+- `tailwindcss` & `@tailwindcss/vite` (`v4`) — Next-generation utility-first CSS styling
+- `vite` (`v8`) — High-speed frontend build tool
 
-| Command | Description |
-|---------|-------------|
-| npm run dev | Start Vite dev server with hot reload |
-| npm run build | Production build to dist/ |
-| npm run preview | Serve the production build locally |
-| npm run lint | Run ESLint across the project |
+---
 
-## Project Structure
+## 🧩 Challenges Faced & Solutions
 
+1. **Configuring Custom Design Tokens in Tailwind CSS v4:**
+   - *Challenge:* Tailwind CSS 4 replaced traditional `tailwind.config.js` files with a CSS-native configuration model, requiring a new approach for custom brand colors and Google Fonts (`Poppins`).
+   - *Solution:* Defined custom color variables and font families directly inside `src/index.css` using the `@theme` directive, ensuring consistent design tokens across all components.
 
+2. **Maintaining Smooth Animations Without Hurting Performance:**
+   - *Challenge:* Animating multiple landing page sections simultaneously could cause layout shifts or jank on lower-end mobile devices.
+   - *Solution:* Built a reusable `ScrollReveal` component with Framer Motion's viewport triggers (`once: true`) so elements animate smoothly only once when entering the screen.
+
+---
+
+## 📁 Project Structure
+
+```text
 remote_recruit/
 ├── public/              # Static assets (favicon)
 ├── src/
@@ -50,79 +72,11 @@ remote_recruit/
 │   ├── Layouts/         # Root layout (Navbar + Footer + Outlet)
 │   ├── pages/
 │   │   ├── Auth/        # Sign In & Sign Up pages
-│   │   ├── Home/        # Landing page sections
-│   │   └── NotFound.jsx
+│   │   ├── Home/        # Landing page sections (Hero, GlobalReach, FAQ, Pricing, etc.)
+│   │   └── NotFound.jsx # 404 page
 │   ├── routes/          # React Router configuration
-│   ├── index.css        # Global styles & Tailwind theme
+│   ├── index.css        # Global styles & Tailwind @theme tokens
 │   └── main.jsx         # App entry point
 ├── index.html           # HTML shell & SEO meta tags
 ├── vite.config.js
-├── eslint.config.js
 └── package.json
-
-
-## Pages & Routes
-
-| Route | Page | Status |
-|-------|------|--------|
-| / | Home (landing page) | Active |
-| * | 404 Not Found | Active |
-| /signin | Sign In | Page exists — *not wired in router* |
-| /signup | Sign Up | Page exists — *not wired in router* |
-
-The Navbar links to /signin and /signup, but those routes are not registered in src/routes/router.jsx yet. Until they are added, those links show the 404 page.
-
-## Landing Page Sections
-
-The home page (src/pages/Home/Home.jsx) includes:
-
-1. *Hero* — headline, CTA, gradient background
-2. *GlobalReach* — worldwide job opportunities
-3. *Actually* — fee-free messaging
-4. *Custom* — custom profile showcase
-5. *ReadyHelp* — support CTA with background image
-6. *FAQ* — accordion with common questions
-7. *Pricing* — Free and Premium plans
-
-Shared layout: *Navbar* (desktop + mobile menu), *Footer, **ScrollToTopButton*.
-
-## Design Tokens
-
-Custom colors and typography are defined in src/index.css via Tailwind @theme:
-
-- Primary: #1E3E85, #336DA6
-- Accent: #F5A623
-- Font: Poppins (loaded via Google Fonts in index.html)
-
-## SEO
-
-index.html includes:
-
-- Page title and meta description
-- Open Graph tags (og:title, og:description, og:type)
-- Twitter card meta tags
-
-## Build Output
-
-A successful production build produces roughly:
-
-- ~444 KB JavaScript (gzipped ~144 KB)
-- ~41 KB CSS (gzipped ~9 KB)
-- Optimized PNG/SVG assets in dist/assets/
-
-Run npm run build to verify before deployment.
-
-## Known Issues
-
-| Priority | Issue | Location |
-|----------|-------|----------|
-| High | /signin and /signup routes missing from router | src/routes/router.jsx |
-| Medium | FAQ contact link uses Link to="mailto:..." instead of <a href="mailto:..."> | src/pages/Home/Faq.jsx |
-| Medium | Footer RR logo Link missing to="/" | src/pages/Home/Shared/Footer/Footer.jsx |
-| Medium | Unused skills array | src/pages/Home/Custom.jsx |
-| Low | Image alt text mismatches section content | Actually.jsx, Custom.jsx |
-| Low | Premium pricing CTA points to / instead of /signup | src/pages/Home/Pricing.jsx |
-| Low | Typography breakpoints in index.css — tablet h2 is smaller than mobile | src/index.css |
-| Low | ESLint may report errors from .vite/ cache; add to globalIgnores if needed | eslint.config.js |
-
-## Deployment
